@@ -22,7 +22,7 @@ public class Bullets extends Shape {
         this.y = y;
         this.radio = 55;
         this.c = Color.black;
-        this.currentImage = ci;
+        this.currentImage=ci;
         this.vel=vel;
         rect= new Rectangle(x, y, radio*2, radio*2);
     }
@@ -32,10 +32,8 @@ public class Bullets extends Shape {
         g.fillOval(x, y, radio, radio);
     }
 
-    public void move(){}
-
-    public void move2(int ci){
-        currentImage = ci;
+    public void move(){
+        //currentImage = ci;
         if (currentImage==1){ //Middle
             this.setY(-vel);
         }else if (currentImage==2){ //Right
@@ -49,13 +47,7 @@ public class Bullets extends Shape {
     }
 
     public void setX(int n){//n es num de pixeles
-
-        if(x > 1000){//Validacion para no salirse de la pantalla
-            this.x -=n;
-            x = 0;
-        }else{
-            this.x += n; //suma o resta el num de pixeles a mover para la coord
-        }
+        this.x += n; //suma o resta el num de pixeles a mover para la coord
         updateRect(this.getX(),this.getY());
     }
 

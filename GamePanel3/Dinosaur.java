@@ -17,7 +17,7 @@ import java.awt.image.*;
 import java.util.ArrayList;
 
 public class Dinosaur extends Shape{
-	private int velY;
+	private int vel;
 	private BufferedImage dino = getImage("dino.png");
 	private int addX = 10;
 	private int addY = 10;
@@ -35,7 +35,7 @@ public class Dinosaur extends Shape{
 	public Dinosaur(int vel){
 			this.x = 0;
 			this.y = 0;//rand.nextInt((1100 - 0) + 1)*-1;
-			this.velY=vel;
+			this.vel=vel;
 	}
 
 	public void draw (Graphics g){
@@ -43,34 +43,14 @@ public class Dinosaur extends Shape{
 	}
 
 	public void move(){
-		if((this.x) >= 500){
-			addX = -addX;
-			x = 490;
+		if((this.x) >= 1100){
+			x=0;
 		}
-		if(x<=0){
-			addX = -addX;
-			x = 10;
-		}
-		if((this.y) >= 400){
-			addY = -addY;
-		}if(y<=0){
-			addY=-addY;
-			y = 10;
-		}
-		x += addX;
-		y +=addY;
+		this.setX(vel);
 	}
 
 	public void setX(int n){//n es num de pixeles
+		this.x += n; //suma o resta el num de pixeles a mover para la coord
 
-		if(x > 1000){//Validacion para no salirse de la pantalla
-			this.x -=n;
-			x = 0;
-		}else{
-			this.x += n; //suma o resta el num de pixeles a mover para la coord
-		}
-	}
-	public void setY(int n){//n es num de pixeles
-		this.y += n; //suma o resta el num de pixeles a mover
 	}
 }

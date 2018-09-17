@@ -31,8 +31,6 @@ public abstract class Shape{
 
 	public boolean collision (Rectangle r){
 		Rectangle rectColl = r;
-		//System.out.println(r.getX() + r.getY());
-
 		return rect.contains(rectColl.getX(), rectColl.getY());
 	}
 

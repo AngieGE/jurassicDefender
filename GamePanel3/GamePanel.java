@@ -19,10 +19,8 @@ import java.awt.image.*;
 import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable { //Runnable debe tener el método Run
-
 	//DECLARACION DE INSTANCIAS.-.-.-.--.-.-.-.-.-.-.-..-
 	private Thread animator; //Controla la animación general sobre un thread
-
 	//Pantalla y graficos y juego
 	private static final int PWIDTH = 1100;//Tamaño del canvas
 	private static final int PHEIGHT = 688;
@@ -33,22 +31,14 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 	private Graphics dbg, cat1;
 	private Image dbImage = null;
 	private int vidas = 4;
-
-	//Dino
-	//public Circle dino; //Guarda la relacion ente clase Circle y GamePanel
-
 	//Enemies
 	ArrayList<Meteorito> enemies = new ArrayList<Meteorito>(); //Arreglo con todos los enemigos
-
 	//Weapon
 	ArrayList<Bullets> bullets = new ArrayList<Bullets>(); //Arreglo con todas las balas
 	private int currentImag=1; //variable que almacena el numero de la imagen actual
 	private BufferedImage catapulta = getImage("catapultMiddle.png");; //la imagen de la catapulta mostrado en la pantalla
-	private BufferedImage catapulta2 = getImage("catapultMiddle.png");; //la imagen de la catapulta mostrado en la pantalla
-	private BufferedImage vida1 = getImage("life.png");; //la imagen de la catapulta mostrado en la pantalla
-	private BufferedImage vida2 = getImage("life.png");; //la imagen de la catapulta mostrado en la pantalla
-	private BufferedImage vida3 = getImage("life.png");; //la imagen de la catapulta mostrado en la pantalla
-	private BufferedImage vida4 = getImage("life.png");; //la imagen de la catapulta mostrado en la pantalla
+	//Vidas
+	ArrayList<Circle> vidasFlores = new ArrayList<Circle>(); //Arreglo con todas las balas
 	private Dinosaur mydino;
 
 	public GamePanel(){
@@ -62,8 +52,13 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 			public void mousePressed(MouseEvent e){
 				testPress(e.getX(),e.getY()); }
 		});
-		//dino = new Circle(0,520);
 		mydino =new Dinosaur(5);
+		//Crea las vidas
+		int x=350;
+		for(int i=0; i< 4; i++){
+			vidasFlores.add(new Circle(x,600, 50, 70));
+			x+=100;
+		}
 	}//GamePanel() cierra
 
 	public void addNotify(){
@@ -98,33 +93,23 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 
 	private void gameUpdate(){//Cuando la tecla se presiona se hace el Update
 		if(!isPaused && !gameOver){
-			//dino.move();
-			//dino.setX(5);
-
 			//Avanzan los enemigos
 			for (int i=0; i< enemies.size()-1; i++){
 				enemies.get(i).move();
 			}
-			reduceLife();
 			//Se crean enemigos y se eliminan los que ya salieron de la pantalla
-			createEnemy(5);
-			mydino.setX(5);
+			createEnemy(4);
+			mydino.move();
 			//Avanzan las balas
-			for (int i=0; i< bullets.size()-1; i++){
-				bullets.get(i).move2(currentImag);
+			for (int i=0; i< bullets.size(); i++){
+				bullets.get(i).move();
 			}
 			//Se eliminann las baas que ya salieron de la pantalla
 			deleteBullets();
-
 			//Revisa colision  meteorito bala
-			for (int i=0; i< enemies.size()-1; i++){
-				for (int j=0; j< bullets.size()-1; j++)
-					if (enemies.get(i).collision(bullets.get(j).getRectangle())){
-						System.out.println("COLLISION");
-						enemies.remove(enemies.get(i));
-				 	}
-			}
-
+			checkCollision();
+			//Revisa vidas menos
+			reduceLife();
 		}
 	}//gameUpdate() closes
 
@@ -140,24 +125,19 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 			}
 		}
 		dbg.drawImage(img, 0, 0, null);//Background image is created
-		//dino.draw(dbg);//Se dibuja un circulo que simula ser el dinosaurio
 		mydino.draw(dbg);
 		dbg.drawImage(catapulta,400, 400, null);//dibuja la catapulta en la pantalla
-		dbg.drawImage(vida1, 350, 605, null);
-		dbg.drawImage(vida2, 450, 605, null);
-		dbg.drawImage(vida3, 550, 605, null);
-		dbg.drawImage(vida4, 650, 605, null);
-
-		//cat1.drawImage(catapulta2,100, 400, null); // No borrar plis
-
 		//Print bullets
-		for (int i=0; i< bullets.size()-1; i++){
-				bullets.get(i).draw(dbg);
+		for (int i=0; i< bullets.size(); i++){
+			bullets.get(i).draw(dbg);
 		}
-
 		//Print enemies
 		for (int i=0; i< enemies.size()-1; i++){
 			enemies.get(i).draw(dbg);
+		}
+		//Print flores
+		for(int i=0; i< vidasFlores.size(); i++){
+			vidasFlores.get(i).draw(dbg);
 		}
 
 	}//gameRender()
@@ -183,17 +163,15 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 	}
 
 	public void createEnemy(int min){
-
 		//Se eliminan los enemigos que esten fuera de pantalla
 		for (int i=0; i< enemies.size()-1; i++){
 			if(enemies.get(i).getY() > PHEIGHT){
 				enemies.remove(i); //System.out.println("Se elimina un enemigo" + enemies.get(i).getY());
 			}
 		}
-
 		//Se crea un nuevo enemigo si hay menos de min
 		if(enemies.size() <min){
-			enemies.add(new Meteorito(8 ));
+			enemies.add(new Meteorito(8));
 		}
 	}
 
@@ -202,23 +180,34 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 		for (int i=0; i< bullets.size()-1; i++){
 			if( (bullets.get(i).getY() < 0)|| (bullets.get(i).getX() > PWIDTH) || (bullets.get(i).getX() < 0) ){
 				bullets.remove(i);
-				//System.out.println("Bye en pos y= " + bullets.get(i).getRectangle().y + " x= "+bullets.get(i).getRectangle().x);
-				//System.out.println(bullets.size());
 			}
 		}
 	}
 
-	public void reduceLife(){
-			for (int i=0; i< enemies.size()-1; i++){
-				//System.out.println("Coordenadas en y son " + enemies.get(i).getRectangle().y);
-				if( enemies.get(i).getY() == 520 ){
-				//System.out.println("Vidas restantes: " + vidas);
-				vidas--;
-				if(vidas <= 0){
-					JOptionPane.showMessageDialog(null, "Perdiste tus 4 vidas :(");
-					System.exit(0);
+	public void checkCollision(){
+		for (int i=0; i< enemies.size()-1; i++){
+			for (int j=0; j< bullets.size()-1; j++)
+				if (enemies.get(i).collision(bullets.get(j).getRectangle())){
+					System.out.println("COLLISION");
+					enemies.remove(enemies.get(i));
 				}
-			}
+		}
+	}
+
+	public void reduceLife(){
+		//Si colisiona con las flores los dos objetos se eliminan y sele resta una vida
+		if(vidas <= 0){
+			JOptionPane.showMessageDialog(null, "Perdiste tus 4 vidas :(");
+			System.exit(0);
+		}
+		for (int i=0; i< enemies.size()-1; i++){
+			for (int j=0; j< vidasFlores.size(); j++)
+				if (enemies.get(i).collision(vidasFlores.get(j).getRectangle())){
+					System.out.println("COLLISION");
+					enemies.remove(enemies.get(i));
+					vidasFlores.remove(vidasFlores.get(j));
+					vidas--;
+				}
 		}
 	}
 
@@ -237,7 +226,6 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 					stopGame();
 				}
 				evaluateKey(keyCode);//Se llama al metodo evaluateKey para cambiar las imagenes
-				//si el jugador selecciona la tecla de izquierda o derecha
 			}
 		});
 	}
@@ -253,7 +241,7 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 				changeImage(false);
 				break;
 			case KeyEvent.VK_SPACE  :
-				bullets.add(new Bullets(450, 450, currentImag, 10));
+				bullets.add(new Bullets(470, 450, currentImag, 10));
 				break;
 		}
 	}
@@ -266,7 +254,7 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 	}
 
 	//Metodo para leer la imagen del archivo
-	private BufferedImage getImage(String imageDirection) {
+	public BufferedImage getImage(String imageDirection) {
 		try { //Se tiene que utilizar un try catch para usar ImageIO
 			return ImageIO.read(getClass().getResource(imageDirection));
 		} catch (IOException e) {
@@ -276,24 +264,24 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 	}
 
 	//Metodo que cambia la imagen cargada sin importar si se lecciona izquierda o derecha
-    //de manera secuencial (primero el perico, luego el perro y luego el gato)
-    private void changeImage(boolean advance){
+	//de manera secuencial (primero el perico, luego el perro y luego el gato)
+	public void changeImage(boolean advance){
 		//Image 1 middle, image 2 right, image 3 left
-      if(advance){
-        if(currentImag==1){
-          this.catapulta = getImage("catapultRight.png");
-          this.currentImag=2;
-        }else if (currentImag==3){
-          this.catapulta = getImage("catapultMiddle.png");
-          this.currentImag=1;
-        }
-      }else if (!advance)
-        if(currentImag==1){
-          this.catapulta = getImage("catapultLeft.png");
-          this.currentImag=3;
-        }else if (currentImag==2){
-          this.catapulta = getImage("catapultMiddle.png");
-          this.currentImag=1;
-        }
-    }
+		if(advance){
+			if(currentImag==1){
+				this.catapulta = getImage("catapultRight.png");
+				this.currentImag=2;
+			}else if (currentImag==3){
+				this.catapulta = getImage("catapultMiddle.png");
+				this.currentImag=1;
+			}
+		}else if (!advance)
+			if(currentImag==1){
+				this.catapulta = getImage("catapultLeft.png");
+				this.currentImag=3;
+			}else if (currentImag==2){
+				this.catapulta = getImage("catapultMiddle.png");
+				this.currentImag=1;
+			}
+	}
 }
