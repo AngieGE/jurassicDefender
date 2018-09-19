@@ -4,11 +4,11 @@
     <list default="true" id="1855a195-b399-4bd2-adc4-97fef8890df0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bullets.java" beforeDir="false" afterPath="$PROJECT_DIR$/Bullets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Meteorito.java" beforeDir="false" afterPath="$PROJECT_DIR$/Meteorito.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shape.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GamePanel3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GamePanel3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GamePanel3/Bullets.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GamePanel3/Bullets.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GamePanel3/GamePanel.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,6 +21,7 @@
     <session id="-1596984655">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -37,12 +38,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="93" />
+          <entry key="java" value="679" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="93" />
+          <entry key="JAVA" value="679" />
         </counts>
       </usages-collector>
     </session>
@@ -58,20 +59,39 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GamePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="205" column="54" lean-forward="true" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
+            <state relative-caret-position="349">
+              <caret line="257" column="5" lean-forward="true" selection-start-line="257" selection-start-column="5" selection-end-line="257" selection-end-column="5" />
+              <folding>
+                <element signature="e#1351#1360#0" expanded="true" />
+                <element signature="e#1978#2080#0" expanded="true" />
+                <element signature="e#2079#2080#0" expanded="true" />
+                <element signature="method#addNotify#0;class#GamePanel#0" />
+                <element signature="method#startGame#0;class#GamePanel#0" />
+                <element signature="method#run#0;class#GamePanel#0" />
+                <element signature="method#gameUpdate#0;class#GamePanel#0" />
+                <element signature="method#gameRender#0;class#GamePanel#0" />
+                <element signature="method#paintComponent#0;class#GamePanel#0" />
+                <element signature="method#paintScreen#0;class#GamePanel#0" />
+                <element signature="method#createEnemy#0;class#GamePanel#0" />
+                <element signature="method#deleteBullets#0;class#GamePanel#0" />
+                <element signature="method#checkCollision#0;class#GamePanel#0" />
+                <element signature="method#reduceLife#0;class#GamePanel#0" />
+                <element signature="method#gameOverMessage#0;class#GamePanel#0" />
+                <element signature="method#getImage#0;class#GamePanel#0" />
+                <element signature="method#changeImage#0;class#GamePanel#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Shape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+            <state relative-caret-position="40">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -79,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Meteorito.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            <state relative-caret-position="165">
+              <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -88,8 +108,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Bullets.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+            <state relative-caret-position="125">
+              <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -109,6 +129,8 @@
     <findStrings>
       <find>--</find>
       <find>Col</find>
+      <find>testPress</find>
+      <find>mm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,10 +140,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Circle.java" />
-        <option value="$PROJECT_DIR$/GamePanel.java" />
-        <option value="$PROJECT_DIR$/Shape.java" />
         <option value="$PROJECT_DIR$/Meteorito.java" />
+        <option value="$PROJECT_DIR$/Shape.java" />
         <option value="$PROJECT_DIR$/Bullets.java" />
+        <option value="$PROJECT_DIR$/GamePanel.java" />
       </list>
     </option>
   </component>
@@ -161,7 +183,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537315943646" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537322731571" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -201,12 +223,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537308518100</updated>
-      <workItem from="1537308521854" duration="2274000" />
+      <workItem from="1537308521854" duration="7730000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2274000" />
+    <option name="totallyTimeSpent" value="7730000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="725" extended-state="0" />
@@ -226,7 +248,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.328594" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.328594" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -263,31 +285,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GamePanel.java">
+    <entry file="file://$PROJECT_DIR$/Shape.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="205" column="54" lean-forward="true" selection-start-line="205" selection-start-column="54" selection-end-line="205" selection-end-column="54" />
+        <state relative-caret-position="40">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Meteorito.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        <state relative-caret-position="165">
+          <caret line="16" column="46" lean-forward="true" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Bullets.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+        <state relative-caret-position="125">
+          <caret line="69" column="30" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Shape.java">
+    <entry file="file://$PROJECT_DIR$/GamePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        <state relative-caret-position="349">
+          <caret line="257" column="5" lean-forward="true" selection-start-line="257" selection-start-column="5" selection-end-line="257" selection-end-column="5" />
+          <folding>
+            <element signature="e#1351#1360#0" expanded="true" />
+            <element signature="e#1978#2080#0" expanded="true" />
+            <element signature="e#2079#2080#0" expanded="true" />
+            <element signature="method#addNotify#0;class#GamePanel#0" />
+            <element signature="method#startGame#0;class#GamePanel#0" />
+            <element signature="method#run#0;class#GamePanel#0" />
+            <element signature="method#gameUpdate#0;class#GamePanel#0" />
+            <element signature="method#gameRender#0;class#GamePanel#0" />
+            <element signature="method#paintComponent#0;class#GamePanel#0" />
+            <element signature="method#paintScreen#0;class#GamePanel#0" />
+            <element signature="method#createEnemy#0;class#GamePanel#0" />
+            <element signature="method#deleteBullets#0;class#GamePanel#0" />
+            <element signature="method#checkCollision#0;class#GamePanel#0" />
+            <element signature="method#reduceLife#0;class#GamePanel#0" />
+            <element signature="method#gameOverMessage#0;class#GamePanel#0" />
+            <element signature="method#getImage#0;class#GamePanel#0" />
+            <element signature="method#changeImage#0;class#GamePanel#0" />
+          </folding>
         </state>
       </provider>
     </entry>

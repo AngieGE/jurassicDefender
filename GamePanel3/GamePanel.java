@@ -35,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 	ArrayList<Meteorito> enemies = new ArrayList<Meteorito>(); //Arreglo con todos los enemigos
 	//Weapon
 	ArrayList<Bullets> bullets = new ArrayList<Bullets>(); //Arreglo con todas las balas
+	ArrayList<Bullets> bulletsClick = new ArrayList<Bullets>(); //Arreglo con todas las balas
 	private int currentImag=1; //variable que almacena el numero de la imagen actual
 	private BufferedImage catapulta = getImage("catapultMiddle.png");; //la imagen de la catapulta mostrado en la pantalla
 	//Vidas
@@ -222,7 +223,7 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 		addKeyListener( new KeyAdapter(){//Clase anonima para leer las teclas
 			public void keyPressed(KeyEvent e){//Sobrecarga para leer teclas
 				int keyCode = e.getKeyCode(); //Se convierte la tecla a valor entero ASCII
-				if((keyCode == KeyEvent.VK_ESCAPE)||(keyCode == KeyEvent.VK_Q)||(keyCode == KeyEvent.VK_END)||((keyCode == KeyEvent.VK_C) && e.isControlDown()) ){
+				if((keyCode == KeyEvent.VK_Q)||(keyCode == KeyEvent.VK_END)||((keyCode == KeyEvent.VK_C) && e.isControlDown()) ){
 					stopGame();
 				}
 				evaluateKey(keyCode);//Se llama al metodo evaluateKey para cambiar las imagenes
@@ -240,6 +241,10 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 			case KeyEvent.VK_LEFT  :
 				changeImage(false);
 				break;
+			case KeyEvent.VK_P  :
+			case KeyEvent.VK_ESCAPE:
+				//Que el juego haga pausa
+				break;
 			case KeyEvent.VK_SPACE  :
 				bullets.add(new Bullets(470, 450, currentImag, 10));
 				break;
@@ -248,8 +253,7 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 
 	private void testPress(int x, int y){
 		if(!gameOver && !isPaused){
-
-			//Whatever
+			bullets.add(new Bullets(470, 450, currentImag, 10, x, y));
 		}
 	}
 
