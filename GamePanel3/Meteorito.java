@@ -17,7 +17,7 @@ public class Meteorito extends Shape{
         this.radio =rand.nextInt((55 - 30) + 1)+30;
         this.c = Color.DARK_GRAY;
         this.velY=vel;
-        rect= new Rectangle(x,y, radio*2, radio*2);
+        rect= new Rectangle(x,y, radio, radio);
     }
 
     public void draw (Graphics g){

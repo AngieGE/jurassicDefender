@@ -203,10 +203,10 @@ public class GamePanel extends JPanel implements Runnable { //Runnable debe tene
 		for (int i=0; i< enemies.size()-1; i++){
 			for (int j=0; j< vidasFlores.size(); j++)
 				if (enemies.get(i).collision(vidasFlores.get(j).getRectangle())){
-					System.out.println("COLLISION");
+					//System.out.println("COLLISION");
 					enemies.remove(enemies.get(i));
 					vidasFlores.remove(vidasFlores.get(j));
-					vidas--;
+					//vidas--;
 				}
 		}
 	}

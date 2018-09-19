@@ -16,7 +16,6 @@ public abstract class Shape{
 	protected int y;
 	protected Color c;
 	public Rectangle rect;
-	public Rectangle rectColl;
 
 	public abstract void draw (Graphics g);
 	public abstract void move();
@@ -31,7 +30,7 @@ public abstract class Shape{
 
 	public boolean collision (Rectangle r){
 		Rectangle rectColl = r;
-		return rect.contains(rectColl.getX(), rectColl.getY());
+		return rect.intersects(rectColl.getX(), rectColl.getY(), rectColl.width, rectColl.height);
 	}
 
 	public Rectangle getRectangle(){

@@ -29,6 +29,7 @@ public class Circle extends Shape {
 	}
 
 	public void draw (Graphics g){
+
 		g.drawImage(img, x,y,width, height, null);
 	}
 	public void move(){

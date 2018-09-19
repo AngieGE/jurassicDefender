@@ -24,7 +24,7 @@ public class Bullets extends Shape {
         this.c = Color.black;
         this.currentImage=ci;
         this.vel=vel;
-        rect= new Rectangle(x, y, radio*2, radio*2);
+        rect= new Rectangle(x, y, radio, radio);
     }
 
     public void draw (Graphics g){
